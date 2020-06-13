@@ -21,15 +21,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
+      - run: mkdir junit
       - run: 
-          name: Install JUnit coverage reporter
-          command: yarn add --dev jest-JUnit
-      - run:
-          name: Run tests with JUnit as reporter
-          command: npx jest --ci --runInBand --reporters=default --reporters=jest-junit
+          command: node_modules/.bin/mocha test --reporter mocha-junit-reporter
           environment: 
-            JEST_JUNIT_OUTPUT_DIR: "./junit/test-results.xml"
-          when: always
+            MOCHA_FILE: ./junit/test-results.xml
       - store_test_results:
           path: ./junit
       - store_artifacts:

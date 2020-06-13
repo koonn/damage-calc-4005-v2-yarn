@@ -5,14 +5,11 @@
   "main": "index.js",
   "author": "",
   "scripts": {
-    "test": "jest"
-  },
-  "jest": {
-    "reporters": ["default", "jest-junit"]
+    "test": "node_modules/.bin/mocha"
   },
   "license": "ISC",
   "devDependencies": {
-    "jest-junit": "^10.0.0",
-    "jest": "^25.1.0"
+    "jest-junit": "10.0.0",
+    "mocha": "^4.0.1"
   }
 }
